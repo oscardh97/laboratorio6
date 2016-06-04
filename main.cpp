@@ -47,6 +47,19 @@ int main(int argc, char const *argv[]){
 			cout << "¿Es fertil?: 1/0" << endl;
 			cin >> fertil;
 			personList.push_back(new Person(nombre, esMacho, pelo, ojos, piel, fertil));
+		}else if (opcion == 2){
+			int pos;
+			for (int i=0; i<personList.size(); i++){
+				cout << personList[i]->toString() << endl;
+			}
+			cout << "Ingrese La Posicion A Borrar: " << endl;
+			cin >> pos;
+			personList.erase(personList.begin()+pos);
+			for (int i=0; i<personList.size(); i++){
+	                        cout << personList[i]->toString() << endl;
+	                }  
+			cout << " Persona Borrada!" << endl;
+				
 		}else if(opcion == 3){
 			cout << personList[0]->toString() << endl;
 			cout << personList[1]->toString() << endl;

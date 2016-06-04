@@ -5,6 +5,7 @@
 #include <cstdlib>
 using std::string;
 using std::stringstream;
+using std:: endl;
 
 Person::Person(string nombre,bool isMacho,char* colorC,char* colorO,char* colorP,bool fertil){
 	this->nombre = nombre;
@@ -30,9 +31,9 @@ const char* Person::getColorP() const{
 }
 string Person::toString()const{
 	stringstream ss;
-	ss << "Person: " << nombre << "Cabello: " << (colorC[0] == 'A' ? "Oscuro" : colorC[0] == 'a' ? "Rubio" : "Blonde" )  
-	<< "Ojos: " << (colorO[0] == 'A' ? "Oscuros" :  colorO[0] == 'a' ? "Verdes" : "Azules" )  
-	<< "Piel: " << (colorP[0] == 'A' ? "Oscura"  : 	"Blanca");
+	ss << nombre << endl << "\tCabello: " << (colorC[0] == 'A' ? "Oscuro" : colorC[0] == 'a' ? "Rubio" : "Blonde" ) << endl  
+	<< "\tOjos: " << (colorO[0] == 'A' ? "Oscuros" :  colorO[0] == 'a' ? "Verdes" : "Azules" ) << endl  
+	<< "\tPiel: " << (colorP[0] == 'A' ? "Oscura"  : 	"Blanca") << endl;
 	return ss.str();
 }
 char* calcularProbabilidad(const char gen1[2], const char gen2[2]){
