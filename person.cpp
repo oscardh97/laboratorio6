@@ -7,7 +7,9 @@ using std::string;
 using std::stringstream;
 using std:: endl;
 
-Person::Person(){}
+Person::Person(){
+	this->nombre = "";
+}
 Person::Person(string nombre,bool isMacho,char* colorC,char* colorO,char* colorP,bool fertil){
 	this->nombre = nombre;
 	this->isMacho = isMacho;
@@ -29,6 +31,9 @@ const char* Person::getColorO() const{
 }
 const char* Person::getColorP() const{
 	return this->colorP;
+}
+const bool Person::esMacho() const{
+	return this->isMacho;
 }
 string Person::toString()const{
 	stringstream ss;
@@ -58,7 +63,7 @@ char* calcularProbabilidad(const char gen1[2], const char gen2[2]){
 }
 const Person operator+(const Person& lhs, const Person& rhs){
 	int puedeTener = rand() % 100 + 1;
-	if(puedeTener >= 21){
+	if(puedeTener >= 21 || (lhs.esMacho() == rhs.esMacho())){
 		return Person();
 	}
 	char* nuevoCabello = calcularProbabilidad(lhs.getColorC(), rhs.getColorC());
