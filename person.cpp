@@ -3,6 +3,7 @@
 #include <sstream>
 using std::string;
 using std::stringstream;
+using std:: endl;
 
 Person::Person(string nombre,bool isMacho,char colorC[2],char colorO[2],char colorP[2],bool fertil){
 	this->nombre = nombre;
@@ -20,9 +21,9 @@ Person::~Person(){
 
 string Person::toString()const{
 	stringstream ss;
-	ss << "Person: " << nombre << "Cabello: " << (colorC[0] == 'A' ? "Oscuro" : colorC[0] == 'a' ? "Rubio" : "Blonde" )  
-	<< "Ojos: " << (colorO[0] == 'A' ? "Oscuros" :  colorO[0] == 'a' ? "Verdes" : "Azules" )  
-	<< "Piel: " << (colorP[0] == 'A' ? "Oscura"  : 	"Blanca");
+	ss << nombre << endl << "\tCabello: " << (colorC[0] == 'A' ? "Oscuro" : colorC[0] == 'a' ? "Rubio" : "Blonde" ) << endl  
+	<< "\tOjos: " << (colorO[0] == 'A' ? "Oscuros" :  colorO[0] == 'a' ? "Verdes" : "Azules" ) << endl  
+	<< "\tPiel: " << (colorP[0] == 'A' ? "Oscura"  : 	"Blanca") << endl;
 	return ss.str();
 }
 
