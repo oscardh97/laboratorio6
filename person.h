@@ -11,7 +11,8 @@ class Person{
 	char colorP [2];
 	bool fertil;
  public:
-	Person(bool,char[],char[],char[],bool);
+	Person(string, bool,char[2],char[2],char[2],bool);
+	string toString() const;
 	virtual ~Person();
 };
 
