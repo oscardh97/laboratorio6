@@ -16,8 +16,10 @@ class Person{
 	Person();
 	string toString() const;
 	const char* getColorC() const;
+	const string getNombre() const;
 	const char* getColorP() const;
 	const char* getColorO() const;
+	const bool esFertil() const;
 	virtual ~Person();
 };
 

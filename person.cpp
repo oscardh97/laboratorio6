@@ -3,10 +3,12 @@
 #include <sstream>
 #include <ctime>
 #include <cstdlib>
+#include <iostream>
 using std::string;
 using std::stringstream;
-using std:: endl;
-
+using std::endl;
+using std::cout;
+using namespace std;
 Person::Person(){
 	this->nombre = "";
 }
@@ -23,6 +25,9 @@ Person::Person(string nombre,bool isMacho,char* colorC,char* colorO,char* colorP
 }
 Person::~Person(){
 }
+const string Person::getNombre() const{
+	return this->nombre;	
+}
 const char* Person::getColorC() const{
 	return this->colorC;
 }
@@ -35,15 +40,19 @@ const char* Person::getColorP() const{
 const bool Person::esMacho() const{
 	return this->isMacho;
 }
+const bool Person::esFertil() const{
+	return this->fertil;
+}
 string Person::toString()const{
 	stringstream ss;
-	ss << nombre << endl << "\tCabello: " << (colorC[0] == 'A' ? "Oscuro" : colorC[0] == 'a' ? "Rubio" : "Blonde" ) << endl  
+	ss << colorC[0] << endl;
+	ss << nombre << endl << "\tCabello: " << (colorC[0] == 'A' ? "Oscuro" : colorC[0] == 'a' ? "Rubio" : "Blanca" ) << endl  
 	<< "\tOjos: " << (colorO[0] == 'A' ? "Oscuros" :  colorO[0] == 'a' ? "Verdes" : "Azules" ) << endl  
-	<< "\tPiel: " << (colorP[0] == 'A' ? "Oscura"  : 	"Blanca") << endl;
+	<< "\tPiel: " << (colorP[0] == 'A' ? "Oscura"  : "Blanca") << endl;
 	return ss.str();
 }
 char* calcularProbabilidad(const char gen1[2], const char gen2[2]){
-	srand(time(NULL));
+	//srand(time(NULL));
 	char* genes = new char[4];
 	char* nuevosGenes = new char[2];
 	genes[0] = gen1[0];
@@ -62,8 +71,9 @@ char* calcularProbabilidad(const char gen1[2], const char gen2[2]){
 
 }
 const Person operator+(const Person& lhs, const Person& rhs){
-	int puedeTener = rand() % 100 + 1;
-	if(puedeTener >= 21 || (lhs.esMacho() == rhs.esMacho())){
+	srand(time(NULL));
+	int puedeTener = 1 + rand() % 100;
+	if(puedeTener >= 21 || (lhs.esMacho() == rhs.esMacho()) || (lhs.esFertil() == rhs.esFertil())){
 		return Person();
 	}
 	char* nuevoCabello = calcularProbabilidad(lhs.getColorC(), rhs.getColorC());

@@ -67,24 +67,24 @@ int main(int argc, char const *argv[]){
 			for (int i=0; i<personList.size(); i++){
                                 cout << i << " " << personList[i]->toString() << endl;
                         }
-			cout << "Ingrese El Indice De La Primera Persona: " endl;
+			cout << "Ingrese El Indice De La Primera Persona: " << endl;
 			cin >> pos1;
-			cout << "Ingrese El Indice De La Segunda Persona: " endl;
+			cout << "Ingrese El Indice De La Segunda Persona: " << endl;
 			cin >> pos2;
 			cout << "Desea Usar Condon? Si.1 No.0" << endl;
 			bool condon;
 			cin >> condon;
 			if(condon){
-				nuevaP = *(personList[pos1]) + *(personList[pos2]);
+				nuevaP = *(personList[pos1]) * *(personList[pos2]);
 			}else{
-				nuevaP = *(personList[pos1]) * *(personLi2st[pos2]);
+				nuevaP = *(personList[pos1]) + *(personList[pos2]);
 			}
-			if(nuevaP.nombre == " "){
+			if(nuevaP.getNombre() == ""){
 				cout << "No Salio Embarazada" << endl;
 			}
 			else{
 				cout << "Salio Preñada" << endl;
-				personList.push_back(nuevaP);
+				personList.push_back(&nuevaP);	
 				cout << "Nueva Persona" << nuevaP.toString();
 			}
 
