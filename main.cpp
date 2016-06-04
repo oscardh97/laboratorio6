@@ -50,21 +50,43 @@ int main(int argc, char const *argv[]){
 		}else if (opcion == 2){
 			int pos;
 			for (int i=0; i<personList.size(); i++){
-				cout << personList[i]->toString() << endl;
+				cout << i << " " << personList[i]->toString() << endl;
 			}
 			cout << "Ingrese La Posicion A Borrar: " << endl;
 			cin >> pos;
 			personList.erase(personList.begin()+pos);
 			for (int i=0; i<personList.size(); i++){
-	                        cout << personList[i]->toString() << endl;
+	                        cout << i << " " << personList[i]->toString() << endl;
 	                }  
 			cout << " Persona Borrada!" << endl;
 				
 		}else if(opcion == 3){
-			cout << personList[0]->toString() << endl;
-			cout << personList[1]->toString() << endl;
-			Person nueva = *(personList[0]) + *(personList[1]);
-			cout << nueva.toString() << endl;
+			int pos1;
+			int pos2;
+			Person nuevaP;
+			for (int i=0; i<personList.size(); i++){
+                                cout << i << " " << personList[i]->toString() << endl;
+                        }
+			cout << "Ingrese El Indice De La Primera Persona: " endl;
+			cin >> pos1;
+			cout << "Ingrese El Indice De La Segunda Persona: " endl;
+			cin >> pos2;
+			cout << "Desea Usar Condon? Si.1 No.0" << endl;
+			bool condon;
+			cin >> condon;
+			if(condon){
+				nuevaP = *(personList[pos1]) + *(personList[pos2]);
+			}else{
+				nuevaP = *(personList[pos1]) * *(personLi2st[pos2]);
+			}
+			if(nuevaP.nombre == " "){
+				cout << "No Salio Embarazada" << endl;
+			}
+			else{
+				cout << "Salio Preñada" << endl;
+				personList.push_back(nuevaP);
+				cout << "Nueva Persona" << nuevaP.toString();
+			}
 
 		}
 	}while(1);
